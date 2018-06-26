@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BaseConv
 {
-    class BaseConvClass
+    public class BaseConvClass
     {
         //const
         const string INVALID_INPUT_BASE = "Invalid Input Base";
