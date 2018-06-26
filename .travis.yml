@@ -2,7 +2,7 @@ language: csharp
 solution: BaseConv.sln
 install:
   - nuget restore BaseConv.sln
-  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+  - nuget install NUnit.Runners -Version 3.8.0 -OutputDirectory testrunner
 script:
   - msbuild /p:Configuration=Release BaseConv.sln
   - mono ./testrunner/NUnit.ConsoleRunner.3.8.0/tools/nunit3-console.exe ./BaseConv.Tests/bin/Release/BaseConv.Tests.dll
