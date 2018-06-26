@@ -4,5 +4,5 @@ install:
   - nuget restore BaseConv.sln
   - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 script:
-  - xbuild /p:Configuration=Release BaseConv.sln
-  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./BaseConv.Tests/bin/Release/BaseConv.Tests.dll
+  - msbuild /p:Configuration=Release BaseConv.sln
+  - mono ./testrunner/NUnit.ConsoleRunner.3.8.0/tools/nunit3-console.exe ./BaseConv.Tests/bin/Release/BaseConv.Tests.dll
