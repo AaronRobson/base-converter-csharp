@@ -1,16 +1,17 @@
 ﻿namespace BaseConv.Tests
 {
     using NUnit.Framework;
+    using Interfaces;
 
     [TestFixture]
     public class WhenClassifyingCharacters
     {
-        BaseConvClass _sut;
+        ICharacterClassifier _sut;
 
         [SetUp]
         public void Given()
         {
-            _sut = new BaseConvClass();
+            _sut = new CharacterClassifier();
         }
 
         [TestCase(null, ExpectedResult = false, TestName = "A null character is not a upper case letter.")]

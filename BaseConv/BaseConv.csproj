@@ -43,12 +43,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseConvClass.cs" />
+    <Compile Include="CharacterClassifier.cs" />
     <Compile Include="frm_BaseCalc.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_BaseCalc.Designer.cs">
       <DependentUpon>frm_BaseCalc.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\ICharacterClassifier.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frm_BaseCalc.resx">

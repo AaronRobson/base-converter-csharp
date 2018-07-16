@@ -4,6 +4,8 @@ using System.Text;
 
 namespace BaseConv
 {
+    using Interfaces;
+
     public class BaseConvClass
     {
         //const
@@ -24,30 +26,18 @@ namespace BaseConv
         uint outBas;
         //static bool overflow = false;
 
+        ICharacterClassifier _charClass;
+
+        public BaseConvClass()
+        {
+            //TODO: Pass in Dependencies and use an IoC dependency injection pattern.
+            _charClass = new CharacterClassifier();
+        }
+
         // protected
-        public bool inHighAlpha(char input)
-        {
-            return 'A' <= input && input <= 'Z';
-        }
-
-        public bool inLowAlpha(char input)
-        {
-            return 'a' <= input && input <= 'z';
-        }
-
-        public bool inNumer(char input)
-        {
-            return '0' <= input && input <= '9';
-        }
-
-        public bool InUpperAlphaOrNumeric(char input)
-        {
-            return inHighAlpha(input) || inNumer(input);
-        }
-        
         public char Caps_On(char input)
         { // 'a'..'z' 97..122
-            if ( inLowAlpha(input) )   
+            if (_charClass.inLowAlpha(input) )   
                 return (char)((int)input-32);  // && // $DF(hex) // 223(dec) // 11011111(bin)
             else 
 	            return input;
@@ -55,7 +45,7 @@ namespace BaseConv
 
         protected byte Value_Find(char input)
         { // '0'..'9'
-            if ( inNumer(input) ) //try return StrToInt(Input); except on EConvertError do return ord(Input)-55; }
+            if (_charClass.inNumer(input) ) //try return StrToInt(Input); except on EConvertError do return ord(Input)-55; }
                 return ((byte)((Int32)(input) - NUM_OFFSET));
             else
                 return ((byte)((Int32)(input) - CAP_OFFSET));
@@ -123,11 +113,11 @@ namespace BaseConv
 
                         if (inAlpha)
                         {
-                            if (InUpperAlphaOrNumeric(Caps_On(i)))
+                            if (_charClass.InUpperAlphaOrNumeric(Caps_On(i)))
                                 working = working + Caps_On(i);
                         }
                         else
-                            if (inNumer(i))
+                            if (_charClass.inNumer(i))
                                 working = working + i;
                     }
                     
@@ -159,7 +149,7 @@ namespace BaseConv
                     if ( working )
                     {
                         foreach (char i in num)
-                            if (!InUpperAlphaOrNumeric(Caps_On(i)))
+                            if (!_charClass.InUpperAlphaOrNumeric(Caps_On(i)))
                                 working = false;
 
                         if ( working )
