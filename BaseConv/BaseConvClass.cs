@@ -27,30 +27,23 @@ namespace BaseConv
         // protected
         public bool inHighAlpha(char input)
         {
-            return ( (65 <= input) && (input <= 90) ); //( (97 <= input) && (input <= 122) )
+            return 'A' <= input && input <= 'Z';
         }
 
         public bool inLowAlpha(char input)
         {
-            return ( (97 <= input) && (input <= 122) ); //( (97 < input) && (input < 122) )
+            return 'a' <= input && input <= 'z';
         }
 
         public bool inNumer(char input)
         {
-            if ( (48 <= input) && (input <= 57) )
-                return true;
-            else
-                return false;
+            return '0' <= input && input <= '9';
         }
 
         public bool InUpperAlphaOrNumeric(char input)
         {
-            if ( inHighAlpha(input) || inNumer(input) )
-                return true;
-            else
-                return false;
+            return inHighAlpha(input) || inNumer(input);
         }
-
         
         public char Caps_On(char input)
         { // 'a'..'z' 97..122
