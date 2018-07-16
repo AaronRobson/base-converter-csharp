@@ -20,12 +20,6 @@ namespace BaseConv
         const byte CAP_OFFSET = (int)(A) - 10;  //55;
         const byte NUM_OFFSET = (int)(ZERO);    //48;
 
-        //var
-        string inNum;
-        uint inBas;              // Largest fully functional base is 36 (10 numbers, 26 letters (uppercase))
-        uint outBas;
-        //static bool overflow = false;
-
         ICharacterClassifier _charClass;
 
         public BaseConvClass()
@@ -159,15 +153,13 @@ namespace BaseConv
         }
 
         // public
-        public string BasCalc(string given_inNum, uint given_inBas, uint given_outBas) // overload;
+        public string BasCalc(string given_inNum, uint inBas, uint outBas) // overload;
         {
             string working;
 
             if ( (given_inNum != "") && (Valid(given_inNum,true) != "") ) 
             {
-                inNum = Valid(given_inNum,true);
-                inBas = given_inBas;
-                outBas = given_outBas;
+                var inNum = Valid(given_inNum,true);
                 
                 try
                 {
@@ -209,31 +201,6 @@ namespace BaseConv
                 return BasCalc(given_inNum, Convert.ToUInt32(Valid(given_inBas, false)), Convert.ToUInt32(Valid(given_outBas, false)));
             else
                 return ENTER_VALUES;        // if given_inBas or given_outBas were empty or filled with junk data (empty when validated)
-        }
-
-        public string GetInNum()
-        {
-          return inNum;
-        }
-
-        public string GetInBasAsStr()
-        {
-          return Convert.ToString(inBas);
-        }
-
-        public uint GetInBasAsUnt()
-        {
-          return inBas;
-        }
-
-        public string GetOutBasAsStr()
-        {
-          return Convert.ToString(outBas);
-        }
-
-        public uint GetOutBasAsUInt()
-        {
-          return outBas;
         }
     }
 }
