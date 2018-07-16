@@ -46,6 +46,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="WhenClassifyingCharacters.cs" />
     <Compile Include="WhenConvertingNumericBases.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

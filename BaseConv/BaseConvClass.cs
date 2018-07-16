@@ -43,7 +43,7 @@ namespace BaseConv
                 return false;
         }
 
-        public bool inAlphaNumer(char input)
+        public bool InUpperAlphaOrNumeric(char input)
         {
             if ( inHighAlpha(input) || inNumer(input) )
                 return true;
@@ -130,7 +130,7 @@ namespace BaseConv
 
                         if (inAlpha)
                         {
-                            if (inAlphaNumer(Caps_On(i)))
+                            if (InUpperAlphaOrNumeric(Caps_On(i)))
                                 working = working + Caps_On(i);
                         }
                         else
@@ -166,7 +166,7 @@ namespace BaseConv
                     if ( working )
                     {
                         foreach (char i in num)
-                            if (!inAlphaNumer(Caps_On(i)))
+                            if (!InUpperAlphaOrNumeric(Caps_On(i)))
                                 working = false;
 
                         if ( working )
