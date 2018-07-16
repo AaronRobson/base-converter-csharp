@@ -53,5 +53,14 @@
         {
             return _sut.InUpperAlphaOrNumeric(value);
         }
+
+        [TestCase('a', ExpectedResult = 'A', TestName = "A lower case character is converted to upper case.")]
+        [TestCase('A', ExpectedResult = 'A', TestName = "An upper case character is not affected by upper casing.")]
+        [TestCase('1', ExpectedResult = '1', TestName = "A digit character is not affected by upper casing.")]
+        [TestCase('?', ExpectedResult = '?', TestName = "A punctuation character is not affected by upper casing.")]
+        public char MakeUpperCase(char value)
+        {
+            return _sut.Caps_On(value);
+        }
     }
 }

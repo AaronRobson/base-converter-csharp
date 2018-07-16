@@ -34,15 +34,6 @@ namespace BaseConv
             _charClass = new CharacterClassifier();
         }
 
-        // protected
-        public char Caps_On(char input)
-        { // 'a'..'z' 97..122
-            if (_charClass.inLowAlpha(input) )   
-                return (char)((int)input-32);  // && // $DF(hex) // 223(dec) // 11011111(bin)
-            else 
-	            return input;
-        }
-
         protected byte Value_Find(char input)
         { // '0'..'9'
             if (_charClass.inNumer(input) ) //try return StrToInt(Input); except on EConvertError do return ord(Input)-55; }
@@ -113,8 +104,8 @@ namespace BaseConv
 
                         if (inAlpha)
                         {
-                            if (_charClass.InUpperAlphaOrNumeric(Caps_On(i)))
-                                working = working + Caps_On(i);
+                            if (_charClass.InUpperAlphaOrNumeric(_charClass.Caps_On(i)))
+                                working = working + _charClass.Caps_On(i);
                         }
                         else
                             if (_charClass.inNumer(i))
@@ -149,7 +140,7 @@ namespace BaseConv
                     if ( working )
                     {
                         foreach (char i in num)
-                            if (!_charClass.InUpperAlphaOrNumeric(Caps_On(i)))
+                            if (!_charClass.InUpperAlphaOrNumeric(_charClass.Caps_On(i)))
                                 working = false;
 
                         if ( working )

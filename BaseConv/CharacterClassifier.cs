@@ -23,5 +23,13 @@
         {
             return inHighAlpha(input) || inNumer(input);
         }
+
+        public char Caps_On(char input)
+        { // 'a'..'z' 97..122
+            if (inLowAlpha(input))
+                return (char)((int)input - 32);  // && // $DF(hex) // 223(dec) // 11011111(bin)
+            else
+                return input;
+        }
     }
 }

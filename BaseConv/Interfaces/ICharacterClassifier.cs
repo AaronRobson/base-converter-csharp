@@ -9,5 +9,7 @@
         bool inNumer(char input);
 
         bool InUpperAlphaOrNumeric(char input);
+
+        char Caps_On(char input);
     }
 }
